@@ -58,13 +58,12 @@ Das Problem ist nur, dass ich heute Nachmittag noch einen wichtigen Termin habe 
       expectedResult:
         "Bei intaktem High-Speed-CAN pendeln CAN-High und CAN-Low gegensinnig um etwa 2,5 V.",
     },
-    signalComparison: {
-      title: "High-Speed-CAN Masseschluss CAN-High",
-      normalSignal: "/images/can-highspeed-normal.png",
-      faultSignal: "/images/can-high-masseschluss.png",
-      description:
-        "Vergleich eines intakten High-Speed-CAN-Signals mit einem Masseschluss auf CAN-High.",
-    },
+signalComparison: {
+  title: "CAN-High Masseschluss",
+  faultSignal: "/images/problem1_fault.png",
+  description:
+    "Oszilloskopaufnahme eines CAN-High-Masseschlusses.",
+},
     wiringDiagram: {
       title: "Stromlaufplan ABS/ESP High-Speed-CAN",
       image: "/images/schaltplan-problem1.png",
@@ -142,13 +141,12 @@ Das Problem ist nur, dass ich beruflich auf das Auto angewiesen bin. Ich könnte
       expectedResult:
         "Bei intakter Low-Speed-CAN-Kommunikation sind stabile Signalpegel ohne starke Verformung oder Pegelverschiebung erkennbar.",
     },
-    signalComparison: {
-      title: "Low-Speed-CAN mit Leitungsunterbrechung CAN-Low",
-      normalSignal: "/images/can-lowspeed-normal.png",
-      faultSignal: "/images/can-low-uebergangswiderstand.png",
-      description:
-        "Vergleich zwischen einem intakten Low-Speed-CAN-Signal und einem durch Übergangswiderstand veränderten Signal.",
-    },
+signalComparison: {
+  title: "CAN-Low <unterbrechung",
+  faultSignal: "/images/problem2_fault.png",
+  description:
+    "Oszilloskopaufnahme eines CAN-Low-Signals mit Unterbrechung.",
+},
     wiringDiagram: {
       title: "Stromlaufplan Kombiinstrument Low-Speed-CAN",
       image: "/images/schaltplan-problem2.png",
@@ -349,13 +347,12 @@ Das Problem ist jetzt nur, dass ich heute Nachmittag noch einen Termin habe und 
       expectedResult:
         "Bei intakter Versorgung liegen Klemme 30, Klemme 15 und Masse stabil am Motorsteuergerät an.",
     },
-    signalComparison: {
-      title: "Motorsteuergerät ohne Spannungsversorgung",
-      normalSignal: "/images/can-highspeed-normal.png",
-      faultSignal: "/images/motorsteuergeraet-spannung-fehlt.png",
-      description:
-        "Vergleich zwischen normaler CAN-Kommunikation und fehlender Kommunikation durch inaktives Motorsteuergerät.",
-    },
+signalComparison: {
+  title: "Fehlende Spannungsversorgung Motorsteuergerät",
+  faultSignal: "/images/problem4_fault.png",
+  description:
+    "Messaufnahme der Spannungsversorgung am Motorsteuergerät.",
+},
     wiringDiagram: {
       title: "Stromlaufplan Motorsteuergerät Spannungsversorgung",
       image: "/images/schaltplan-problem4.png",
@@ -489,16 +486,10 @@ diagnosis: {
 },
 
 signalComparison: {
-  title: "CAN-B Leitungsunterbrechung CAN-High",
-
-  normalSignal:
-    "/images/can-b-normal.png",
-
-  faultSignal:
-    "/images/can-b-canhigh-unterbrechung.png",
-
+  title: "CAN-B Leitungsunterbrechung",
+  faultSignal: "/images/problem5_fault.png",
   description:
-    "Vergleich zwischen einem intakten CAN-B-Signal und einer Leitungsunterbrechung auf der CAN-High-Leitung.",
+    "CAN-B Signalbild mit Unterbrechung der CAN-High-Leitung.",
 },
 
 wiringDiagram: {

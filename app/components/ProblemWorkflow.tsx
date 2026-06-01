@@ -33,7 +33,7 @@ export function ProblemWorkflow({ caseId, keywords }: Props) {
 
       {unlocked ? (
         <>
-<SignalComparison />
+<SignalComparison caseId={caseId} />
 <SignalValueCheck />
 <WiringDiagram />
 <WorkDocumentation caseId={caseId} />
