@@ -117,8 +117,8 @@ Das Problem ist nur, dass ich beruflich auf das Auto angewiesen bin. Ich könnte
       "can low",
       "can-low",
       "low speed",
-      "übergangswiderstand",
-      "uebergangswiderstand",
+      "Leitungsunterbrechung",
+      "Unterbrechung",
       "kombiinstrument",
       "schalttafeleinsatz",
       "drehzahlmesser",
@@ -126,6 +126,7 @@ Das Problem ist nur, dass ich beruflich auf das Auto angewiesen bin. Ich könnte
       "01317",
       "erwärmung",
       "warm",
+      "Leitung",
     ],
     diagnosis: {
       faultDescription:
@@ -142,7 +143,7 @@ Das Problem ist nur, dass ich beruflich auf das Auto angewiesen bin. Ich könnte
         "Bei intakter Low-Speed-CAN-Kommunikation sind stabile Signalpegel ohne starke Verformung oder Pegelverschiebung erkennbar.",
     },
     signalComparison: {
-      title: "Low-Speed-CAN mit Übergangswiderstand",
+      title: "Low-Speed-CAN mit Leitungsunterbrechung CAN-Low",
       normalSignal: "/images/can-lowspeed-normal.png",
       faultSignal: "/images/can-low-uebergangswiderstand.png",
       description:
@@ -374,77 +375,152 @@ Das Problem ist jetzt nur, dass ich heute Nachmittag noch einen Termin habe und 
     ],
   },
   {
-    id: "5",
-    title: "Notlauf und Warnlampen",
-    bus: "CAN-C",
-    system: "Antriebs-CAN",
-    customer: "Herr Krause",
-    avatar: "/images/max.png",
-    background: "/images/maxback.png",
-    vehicle: "Porsche Cayenne · 4,0 · 2010",
-    complaint:
-      "Mehrere Warnlampen leuchten auf. Das Fahrzeug fährt nur noch im Notlauf.",
-    faultCode: "U0001 - CAN-C Datenbus fehlerhaft",
-    suspectedFault: "Defekter Abschlusswiderstand im CAN-C-System.",
-    audio: "/audio/problem5.mp3",
-    transcript: "Kein Transkript hinterlegt.",
-    intakeKeywords: {
-      complaint: ["notlauf", "warnlampen", "warnleuchten", "leuchten"],
-      conditions: ["fahrt", "plötzlich", "sporadisch", "dauerhaft"],
-      repairs: ["keine", "noch nicht", "nicht repariert", "nicht geprüft"],
-      notes: ["can", "datenbus", "antriebs-can", "abschlusswiderstand"],
-    },
-    keywords: [
-      "can",
-      "can c",
-      "can-c",
-      "antriebs-can",
-      "abschlusswiderstand",
-      "terminierung",
-      "widerstand",
-      "60 ohm",
-      "120 ohm",
-      "u0001",
-      "datenbus",
-      "notlauf",
-    ],
-    diagnosis: {
-      faultDescription:
-        "Mehrere Warnlampen leuchten auf. Das Fahrzeug fährt nur noch im Notlauf.",
-      suspectedCause:
-        "Gestörte Terminierung im CAN-C-System durch defekten Abschlusswiderstand.",
-      measuringStrategy: [
-        "Fehlerspeicher auslesen",
-        "Gesamtwiderstand zwischen CAN-High und CAN-Low bei ausgeschalteter Zündung messen",
-        "CAN-Signal mit dem Oszilloskop prüfen",
-        "Abschlusswiderstände im Antriebs-CAN eingrenzen",
-      ],
-      expectedResult:
-        "Bei intakter Terminierung beträgt der Gesamtwiderstand zwischen CAN-High und CAN-Low etwa 60 Ohm.",
-    },
-    signalComparison: {
-      title: "CAN-C Terminierungsfehler",
-      normalSignal: "/images/can-c-normal.png",
-      faultSignal: "/images/can-c-terminierung-fehler.png",
-      description:
-        "Vergleich zwischen einem korrekt terminierten CAN-C und einem CAN-C mit fehlerhaftem Abschlusswiderstand.",
-    },
-    wiringDiagram: {
-      title: "Stromlaufplan CAN-C Abschlusswiderstände",
-      image: "/images/schaltplan-problem5.png",
-      measuringPoints: [
-        "CAN-High Antriebs-CAN",
-        "CAN-Low Antriebs-CAN",
-        "Messung zwischen CAN-High und CAN-Low",
-        "Abschlusswiderstand Steuergerät 1",
-        "Abschlusswiderstand Steuergerät 2",
-      ],
-    },
-    measurementTasks: [
-      "Widerstand zwischen CAN-High und CAN-Low bei ausgeschalteter Zündung messen.",
-      "CAN-C-Signal mit dem Oszilloskop prüfen.",
-      "Abschlusswiderstände einzeln eingrenzen.",
-      "Steckverbindungen im Antriebs-CAN prüfen.",
-    ],
+id: "5",
+title: "Scheibenwischer lässt sich nicht abschalten",
+bus: "CAN-B",
+system: "Komfort-CAN",
+customer: "Herr Krause",
+avatar: "/images/max.png",
+background: "/images/maxback.png",
+vehicle: "VW Passat B7 · 2,0 TDI · 2012",
+
+complaint:
+  "Nach dem Einschalten des Scheibenwischers läuft dieser dauerhaft weiter und lässt sich über den Wischerhebel nicht mehr abschalten.",
+
+faultCode:
+  "U1003 - Kommunikation Komfort-CAN fehlerhaft",
+
+suspectedFault:
+  "Leitungsunterbrechung auf der CAN-High-Leitung im Komfort-CAN.",
+
+audio: "/audio/problem5.mp3",
+
+   transcript: `
+Guten Tag.
+
+Ich habe seit ungefähr einer Woche ein Problem mit meinem Passat. Der Scheibenwischer vorne macht sich irgendwie selbstständig. Wenn ich den Wischerhebel betätige, läuft der Scheibenwischer ganz normal an. Das Problem ist nur, dass er sich anschließend nicht mehr ausschalten lässt.
+
+Egal ob ich den Hebel wieder zurückstelle oder in die Aus-Position bringe, der Wischer läuft einfach weiter. Manchmal wischt er dauerhaft auf Intervallgeschwindigkeit, manchmal läuft er sogar durchgehend weiter. Erst wenn ich die Zündung ausschalte und das Fahrzeug verriegele, hört er irgendwann auf.
+
+Der Fehler ist nicht von Anfang an aufgetreten. Zuerst ist das nur gelegentlich passiert. Inzwischen tritt das aber fast jedes Mal auf, sobald ich den Scheibenwischer einschalte.
+
+Mir ist außerdem aufgefallen, dass die übrigen Funktionen am Fahrzeug ganz normal arbeiten. Die Beleuchtung funktioniert, die Fensterheber funktionieren und auch sonst habe ich keine Warnmeldungen im Kombiinstrument bemerkt. Es scheint wirklich nur den Scheibenwischer zu betreffen.
+
+Vor ein paar Tagen hat ein Bekannter von mir vermutet, dass vielleicht der Wischerhebel defekt sein könnte. Deshalb habe ich kurz überlegt, den Hebel austauschen zu lassen. Bevor ich aber unnötig Teile kaufe, wollte ich das Fahrzeug lieber einmal fachgerecht überprüfen lassen.
+
+Bisher wurde an dem Fahrzeug in diesem Bereich noch nichts repariert oder ausgetauscht. Auch der Wischermotor wurde noch nicht geprüft. Das Problem besteht unverändert.
+
+Ich muss heute Nachmittag noch einen Termin wahrnehmen. Deshalb wäre es zunächst hilfreich, wenn Sie die Ursache eingrenzen könnten. Einen Reparaturauftrag würde ich dann gegebenenfalls im Anschluss mit Ihnen besprechen.
+
+Vielen Dank
+`,
+
+intakeKeywords: {
+  complaint: [
+    "scheibenwischer",
+    "wischer",
+    "abschalten",
+    "läuft weiter",
+    "dauerlauf",
+    "nicht ausschalten",
+    "wischerhebel",
+  ],
+
+  conditions: [
+    "dauerhaft",
+    "immer",
+    "sporadisch",
+    "gelegentlich",
+    "nach einschalten",
+    "plötzlich",
+  ],
+
+  repairs: [
+    "keine",
+    "noch nicht",
+    "nicht repariert",
+    "nicht geprüft",
+    "wischermotor",
+    "wischerhebel",
+  ],
+
+  notes: [
+    "can",
+    "komfort can",
+    "datenbus",
+    "kommunikation",
+    "steuergerät",
+  ],
+},
+
+keywords: [
+  "can",
+  "can-b",
+  "can b",
+  "komfort-can",
+  "komfort can",
+  "datenbus",
+  "kommunikation",
+  "can high",
+  "can-high",
+  "leitungsunterbrechung",
+  "wischer",
+  "scheibenwischer",
+  "u1003",
+],
+
+diagnosis: {
+  faultDescription:
+    "Der Scheibenwischer lässt sich nach dem Einschalten nicht mehr abschalten und läuft dauerhaft weiter.",
+
+  suspectedCause:
+    "Unterbrechung der CAN-High-Leitung im Komfort-CAN. Das Steuergerät erhält die Information zum Ausschalten des Scheibenwischers nicht mehr.",
+
+  measuringStrategy: [
+    "Fehlerspeicher auslesen",
+    "Kommunikation der beteiligten Steuergeräte prüfen",
+    "CAN-High und CAN-Low mit dem Oszilloskop messen",
+    "Leitungsverlauf der CAN-High-Leitung prüfen",
+    "Steckverbindungen im Komfort-CAN kontrollieren",
+  ],
+
+  expectedResult:
+    "Bei einer Leitungsunterbrechung auf CAN-High ist das differenzielle CAN-Signal gestört. Die Kommunikation zwischen den Steuergeräten ist eingeschränkt oder unterbrochen.",
+},
+
+signalComparison: {
+  title: "CAN-B Leitungsunterbrechung CAN-High",
+
+  normalSignal:
+    "/images/can-b-normal.png",
+
+  faultSignal:
+    "/images/can-b-canhigh-unterbrechung.png",
+
+  description:
+    "Vergleich zwischen einem intakten CAN-B-Signal und einer Leitungsunterbrechung auf der CAN-High-Leitung.",
+},
+
+wiringDiagram: {
+  title: "Stromlaufplan Komfort-CAN Scheibenwischer",
+
+  image:
+    "/images/schaltplan-problem5.png",
+
+  measuringPoints: [
+    "CAN-High Komfort-CAN",
+    "CAN-Low Komfort-CAN",
+    "Lenksäulensteuergerät",
+    "Bordnetzsteuergerät",
+    "Wischermotorsteuergerät",
+  ],
+},
+
+measurementTasks: [
+  "CAN-High und CAN-Low mit dem Oszilloskop prüfen.",
+  "Signalpegel der CAN-High-Leitung kontrollieren.",
+  "Leitungsunterbrechung durch Durchgangsprüfung eingrenzen.",
+  "Steckverbindungen zwischen Lenksäulensteuergerät und Bordnetzsteuergerät prüfen.",
+],
   },
 ];

@@ -12,7 +12,7 @@ const cases = [
     id: 2,
     bus: "Low-Speed-CAN",
     title: "Drehzahlmesser fällt aus",
-    text: "Übergangswiderstand auf der CAN-Low-Leitung im Komfortsystem.",
+    text: "Leitungsunterbrechung auf der CAN-Low-Leitung im Komfortsystem.",
     color: "amber",
   },
   {
@@ -29,13 +29,13 @@ const cases = [
     text: "Inaktives Motorsteuergerät durch fehlende Spannungsversorgung.",
     color: "emerald",
   },
-  {
-    id: 5,
-    bus: "CAN-C",
-    title: "Notlauf und Warnlampen",
-    text: "Gestörte Terminierung durch defekten Abschlusswiderstand.",
-    color: "violet",
-  },
+{
+  id: 5,
+  bus: "CAN-B",
+  title: "Scheibenwischer lässt sich nicht abschalten",
+  text: "Leitungsunterbrechung auf der CAN-High-Leitung im Komfort-CAN.",
+  color: "violet",
+},
 ];
 
 export default function Home() {
