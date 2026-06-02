@@ -35,7 +35,7 @@ export function ProblemWorkflow({ caseId, keywords }: Props) {
         <>
 <SignalComparison caseId={caseId} />
 <SignalValueCheck />
-<WiringDiagram />
+<WiringDiagram caseId={caseId} />
 <WorkDocumentation caseId={caseId} />
 <RepairCalculation caseId={caseId} />
 <CaseSaveControls caseId={caseId} />

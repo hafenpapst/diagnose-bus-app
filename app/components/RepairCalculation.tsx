@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const PARTS = [
   { id: "leitung", name: "Leitungsreparatur", price: 15 },
   { id: "stecker", name: "Steckerleiste / Kontaktreparatur", price: 56 },
-  { id: "steuergeraet", name: "Türsteuergerät ersetzen", price: 340 },
+  { id: "steuergeraet", name: "Steuergerät ersetzen", price: 340 },
 ];
 
 export function RepairCalculation({ caseId }: { caseId: string }) {
