@@ -295,7 +295,7 @@ Ich müsste allerdings nachher wieder weiter und könnte Ihnen das Fahrzeug desh
     customer: "Frau Neumann",
     avatar: "/images/roswita.png",
     background: "/images/roswitaback.png",
-    vehicle: "BMW 3er · 2.0 Benzin · 2012",
+    vehicle: "Golf 7 · 2.0 Benzin · 2012",
     complaint:
       "Beim Einschalten der Zündung erscheinen mehrere Warnmeldungen. Das Fahrzeug startet zeitweise nicht.",
     faultCode: "U0100 - Kommunikation mit Motorsteuergerät verloren",

@@ -6,7 +6,7 @@ import { OscilloscopePopup } from "./OscilloscopePopup";
 export function WiringDiagram({ caseId }: { caseId: string }) {
   const [selected, setSelected] = useState<React.ReactNode>(null);
 
-if (caseId !== "1" && caseId !== "2" && caseId !== "3") {
+if (caseId !== "1" && caseId !== "2" && caseId !== "3" && caseId !== "4") {
   return null;
 }
 
@@ -239,6 +239,32 @@ if (caseId !== "1" && caseId !== "2" && caseId !== "3") {
           {selected}
         </div>
       )}
+              {caseId === "4" && (
+          <>
+            <div className="relative">
+              <img
+                src="/images/problem4_schaltplan1.png"
+                alt="Schaltplan Problem 4 Seite 1"
+                className="w-full"
+              />
+            </div>
+
+            <div className="relative mt-6">
+              <img
+                src="/images/problem4_schaltplan2.png"
+                alt="Schaltplan Problem 4 Seite 2"
+                className="w-full"
+              />
+            </div>
+            <div className="relative mt-6">
+              <img
+                src="/images/problem4_schaltplan3.png"
+                alt="Schaltplan Problem 4 Seite 3"
+                className="w-full"
+              />
+            </div>
+          </>
+        )}
     </section>
   );
 }
